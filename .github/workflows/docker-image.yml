@@ -9,6 +9,11 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: test
+      run: echo $GITHUB_BASE_REF
   build:
     runs-on: ubuntu-latest
     steps:
