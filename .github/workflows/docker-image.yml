@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       if: github.event.schedule != '0 0 * * *'
-      run: docker build . --file Dockerfile --tag registry.jonasg.be:${GITHUB_BASE_REF} && docker push registry.jonasg.be:${GITHUB_BASE_REF}
+      run: docker build . -t registry.jonasg.be:${GITHUB_BASE_REF} && docker push registry.jonasg.be:${GITHUB_BASE_REF}
     - name: Build the Docker image
       if: github.event.schedule == '0 0 * * *'
-      run: docker build . --file Dockerfile --tag registry.jonasg.be:${GITHUB_BASE_REF}-nightly && docker push registry.jonasg.be:${GITHUB_BASE_REF}-nightly
+      run: docker build . -t registry.jonasg.be:${GITHUB_BASE_REF}-nightly && docker push registry.jonasg.be:${GITHUB_BASE_REF}-nightly
