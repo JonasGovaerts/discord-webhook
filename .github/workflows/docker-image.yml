@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "stable" ]
+  pull_request:
+    branches: [ "stable" ]
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      if: github.event.schedule != '0 0 * * *'
+      run: docker build . --file Dockerfile --tag registry.jonasg.be:${GITHUB_BASE_REF} && docker push registry.jonasg.be:${GITHUB_BASE_REF}
+    - name: Build the Docker image
+      if: github.event.schedule == '0 0 * * *'
+      run: docker build . --file Dockerfile --tag registry.jonasg.be:${GITHUB_BASE_REF}-nightly && docker push registry.jonasg.be:${GITHUB_BASE_REF}-nightly
