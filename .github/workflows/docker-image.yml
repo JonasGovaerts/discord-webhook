@@ -21,7 +21,7 @@ jobs:
     - name: Build the Docker image
       if: github.event.schedule != '0 0 * * *'
       run: |
-           docker build . -t registry.jonasg.be/jonasgovaerts/discord-webhook:stable && /
+           docker build . -t registry.jonasg.be/jonasgovaerts/discord-webhook:stable &&
            docker push registry.jonasg.be/jonasgovaerts/discord-webhook:stable
     - name: Build the Docker image
       if: github.event.schedule == '0 0 * * *'
