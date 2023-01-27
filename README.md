@@ -1,3 +1,5 @@
+[![Docker Image CI](https://github.com/jonasgovaerts/discord-webhook/actions/workflows/docker-image.yml/badge.svg)](https://github.com/jonasgovaerts/discord-webhook/actions/workflows/docker-image.yml)
+
 # Discord-Webhook
 This python webapp is used to receive webhooks from Sonarr, Radarr and Emby and post them to discord.
 It uses the user-agent header to identify which applicaiton is sending the request.
